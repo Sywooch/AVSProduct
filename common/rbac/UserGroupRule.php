@@ -22,6 +22,10 @@ class UserGroupRule extends Rule
                 return $role == User::ROLE_ADMINISTRATOR;
             } elseif ($item->name === 'manager') {
                 return $role == User::ROLE_ADMINISTRATOR || $role == User::ROLE_MANAGER;
+            } elseif ($item->name === 'publisher'){
+                return $role == User::ROLE_ADMINISTRATOR || $role == User::ROLE_PUBLISHER;
+            } elseif ($item->name === 'advertiser'){
+                return $role == User::ROLE_ADMINISTRATOR || $role == User::ROLE_ADVERTISER;
             } elseif ($item->name === 'user') {
                 return $role == User::ROLE_ADMINISTRATOR || $role == User::ROLE_MANAGER || $role == User::ROLE_USER;
             }

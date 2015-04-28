@@ -57,6 +57,27 @@ class m140703_123000_user extends Migration
             'created_at'=>time(),
             'updated_at'=>time()
         ]);
+        $this->insert('{{%user}}', [
+            'id'=>4,
+            'username'=>'publisher',
+            'email'=>'publisher@example.com',
+            'password_hash'=>Yii::$app->getSecurity()->generatePasswordHash('publisher'),
+            'auth_key'=>Yii::$app->getSecurity()->generateRandomString(),
+            'status'=>\common\models\User::STATUS_ACTIVE,
+            'created_at'=>time(),
+            'updated_at'=>time()
+        ]);
+
+        $this->insert('{{%user}}', [
+            'id'=>5,
+            'username'=>'advertiser',
+            'email'=>'advertiser@example.com',
+            'password_hash'=>Yii::$app->getSecurity()->generatePasswordHash('advertiser'),
+            'auth_key'=>Yii::$app->getSecurity()->generateRandomString(),
+            'status'=>\common\models\User::STATUS_ACTIVE,
+            'created_at'=>time(),
+            'updated_at'=>time()
+        ]);
 
         $this->createTable('{{%user_profile}}', [
             'user_id' => Schema::TYPE_PK,
@@ -81,6 +102,14 @@ class m140703_123000_user extends Migration
         ]);
         $this->insert('{{%user_profile}}', [
             'user_id'=>3,
+            'locale'=>Yii::$app->sourceLanguage
+        ]);
+        $this->insert('{{%user_profile}}', [
+            'user_id'=>4,
+            'locale'=>Yii::$app->sourceLanguage
+        ]);
+        $this->insert('{{%user_profile}}', [
+            'user_id'=>5,
             'locale'=>Yii::$app->sourceLanguage
         ]);
         if ($this->db->driverName === 'mysql') {
