@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $form yii\widgets\ActiveForm */
@@ -18,6 +19,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'username') ?>
                 <?= $form->field($model, 'email') ?>
                 <?= $form->field($model, 'password')->passwordInput() ?>
+
+                <?= $form->field($model, 'roles[]')->dropDownList([
+                    'publisher' => Yii::t('frontend', 'Publisher'),
+                    'advertiser' => Yii::t('frontend', 'Advertiser'),
+                ]) ?>
+
                 <div class="form-group">
                     <?= Html::submitButton(Yii::t('frontend', 'Signup'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                 </div>

@@ -37,6 +37,7 @@ use yii\widgets\Breadcrumbs;
                                 </span>
                             </a>
                         </li>
+                        <?php if(Yii::$app->user->can('administrator')) : ?>
                         <!-- Notifications: style can be found in dropdown.less -->
                         <li id="log-dropdown" class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -65,6 +66,7 @@ use yii\widgets\Breadcrumbs;
                                 </li>
                             </ul>
                         </li>
+                        <?php endif; ?>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -138,6 +140,7 @@ use yii\widgets\Breadcrumbs;
                             'label'=>Yii::t('backend', 'Content'),
                             'icon'=>'<i class="fa fa-edit"></i>',
                             'options'=>['class'=>'treeview'],
+                            'visible'=>Yii::$app->user->can('administrator'),
                             'items'=>[
                                 ['label'=>Yii::t('backend', 'Static pages'), 'url'=>['/page/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
                                 ['label'=>Yii::t('backend', 'Articles'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
@@ -157,6 +160,7 @@ use yii\widgets\Breadcrumbs;
                             'label'=>Yii::t('backend', 'System'),
                             'icon'=>'<i class="fa fa-cogs"></i>',
                             'options'=>['class'=>'treeview'],
+                            'visible'=>Yii::$app->user->can('administrator'),
                             'items'=>[
                                 [
                                     'label'=>Yii::t('backend', 'i18n'),

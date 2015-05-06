@@ -4,6 +4,7 @@ namespace frontend\modules\user\models;
 use common\models\User;
 use yii\base\Model;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * Signup form
@@ -13,6 +14,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $roles;
 
     /**
      * @inheritdoc
@@ -38,6 +40,12 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            [['roles'], 'each',
+                'rule' => ['in', 'range' => ArrayHelper::getColumn(
+                    Yii::$app->authManager->getRoles(),
+                    'name'
+                )]
+            ],
         ];
     }
 
@@ -47,6 +55,7 @@ class SignupForm extends Model
             'username'=>Yii::t('frontend', 'Username'),
             'email'=>Yii::t('frontend', 'E-mail'),
             'password'=>Yii::t('frontend', 'Password'),
+            'roles' => Yii::t('frontend', 'Roles')
         ];
     }
 
@@ -58,12 +67,22 @@ class SignupForm extends Model
     public function signup()
     {
         if ($this->validate()) {
+
             $user = new User();
             $user->username = $this->username;
             $user->email = $this->email;
             $user->setPassword($this->password);
             $user->save();
             $user->afterSignup();
+
+            $auth = Yii::$app->authManager;
+            $auth->revokeAll($user->getId());
+
+            if ($this->roles && is_array($this->roles)) {
+                foreach ($this->roles as $role) {
+                    $auth->assign($auth->getRole($role), $user->getId());
+                }
+            }
             return $user;
         }
 
