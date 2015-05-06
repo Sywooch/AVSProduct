@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use ak\Paypal;
+use common\models\User;
 use Yii;
 use frontend\models\ContactForm;
 use yii\web\Controller;
@@ -57,5 +58,12 @@ class SiteController extends Controller
         return $this->render('contact', [
             'model' => $model
         ]);
+    }
+
+    public function actionGetip()
+    {
+        $user = new User();
+        $geo = Yii::$app->ipgeobase->getLocation($user->getClientIp());
+        print_r($geo['ip']);
     }
 }

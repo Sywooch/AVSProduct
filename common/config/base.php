@@ -16,6 +16,11 @@ $config = [
             'ruleTable' => '{{%rbac_auth_rule}}'
         ],
 
+        'ipgeobase' => [
+            'class' => 'himiklab\ipgeobase\IpGeoBase',
+            'useLocalDB' => false,
+        ],
+
         'cache' => [
             'class' => 'yii\caching\DummyCache',
         ],

@@ -117,6 +117,11 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasOne(UserProfile::className(), ['user_id'=>'id']);
     }
 
+    public function getUserGeodata()
+    {
+        return $this->hasOne(UserGeodata::className(), ['user_id'=>'id']);
+    }
+
     /**
      * @inheritdoc
      */
@@ -279,8 +284,24 @@ class User extends ActiveRecord implements IdentityInterface
         // Default role
         $auth =  Yii::$app->authManager;
         $auth->assign($auth->getRole(User::ROLE_USER), $this->getId());
+        //get geo data for user
+        $geo = Yii::$app->ipgeobase->getLocation($this->getClientIp());
+        $user_geodata = new UserGeodata();
+        $user_geodata->load($geo, '');
+        $this->link('userGeodata', $user_geodata);
+        $this->trigger(self::EVENT_AFTER_SIGNUP);
     }
 
+    /**
+     * Creates user geo data
+     * @param array $geoData
+     */
+    public function afterGeoIp()
+    {
+        $ip = $this->getClientIp();
+        $geoData = Yii::$app->ipgeobase->getLocation($ip);
+
+    }
     /**
      * @return string
      */
@@ -293,5 +314,17 @@ class User extends ActiveRecord implements IdentityInterface
             return $this->username;
         }
         return $this->email;
+    }
+
+    public function getClientIp()
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
     }
 }
