@@ -22,7 +22,12 @@ $config = [
                     'class' => 'yii\authclient\clients\GitHub',
                     'clientId' => getenv('GITHUB_CLIENT_ID'),
                     'clientSecret' => getenv('GITHUB_CLIENT_SECRET')
-                ]
+                ],
+//                'vkontakte' => [
+//                    'class' => 'yii\authclient\clients\VKontakte',
+//                    'clientId' => 'vkontakte_client_id',
+//                    'clientSecret' => 'vkontakte_client_secret',
+//                ],
             ]
         ],
         'errorHandler' => [
@@ -37,7 +42,7 @@ $config = [
             'loginUrl'=>['/user/sign-in/login'],
             'enableAutoLogin' => true,
             'as afterLogin' => 'common\behaviors\LoginTimestampBehavior'
-        ]
+        ],
     ]
 ];
 

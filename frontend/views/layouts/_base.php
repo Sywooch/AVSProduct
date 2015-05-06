@@ -50,7 +50,11 @@ use yii\bootstrap\NavBar;
                         [
                             'label' => Yii::t('frontend', 'Backend'),
                             'url' => Yii::getAlias('@backendUrl'),
-                            'visible'=>Yii::$app->user->can('manager')
+                            'visible'=>[
+                                Yii::$app->user->can('manager'),
+                                Yii::$app->user->can('publisher'),
+                                Yii::$app->user->can('advertiser'),
+                            ]
                         ],
                         [
                             'label' => Yii::t('frontend', 'Logout'),
