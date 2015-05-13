@@ -1,8 +1,6 @@
 <?php
 namespace frontend\controllers;
 
-use ak\Paypal;
-use common\models\User;
 use Yii;
 use frontend\models\ContactForm;
 use yii\web\Controller;

@@ -17,6 +17,12 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Base URL' => 'Базовый URL',
+    'File Type' => 'Тип файла',
+    'Image' => 'Изображение',
+    'Thumbnail' => 'Эскиз изображения',
+    '"{attribute}" must be a valid JSON' => '"{attribute}" должен содержать валидный JSON',
+    'Active' => 'Активно',
     'Last login' => 'Последний вход',
     'Updated at' => 'Последнее обновление',
     '"{attribute}" must be a valid JSON' => '"{attribute}" должен содержать валидный JSON',
@@ -41,6 +47,9 @@ return [
     'Gender' => 'Пол',
     'ID' => 'ID',
     'Key' => 'Ключ',
+    'Last login' => 'Последний вход',
+    'Lastname' => 'Фамилия',
+    'Locale' => 'Локаль',
     'Lastname' => 'Фамилия',
     'Locale' => 'Локаль',
     'Manager' => 'Менеджер',
@@ -59,6 +68,10 @@ return [
     'Title' => 'Название',
     'Type' => 'Тип',
     'Updated At' => 'Обновлено',
+    'Updated at' => 'Последнее обновление',
+    'Updater' => 'Обновивщий',
+    'Upload Ip' => 'IP',
+    'Url' => 'Url',
     'Updater' => 'Обновивщий',
     'Upload Ip' => 'IP',
     'Url' => 'Url',

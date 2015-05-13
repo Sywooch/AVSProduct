@@ -43,6 +43,7 @@ $config = [
             'enableAutoLogin' => true,
             'as afterLogin' => 'common\behaviors\LoginTimestampBehavior'
         ],
+        ]
     ]
 ];
 

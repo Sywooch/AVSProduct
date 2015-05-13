@@ -1,10 +1,12 @@
 <?php
+<<<<<<< HEAD
 
 use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
 /* @var $model common\models\ArticleCategory */
+/* @var $categories common\models\ArticleCategory[] */
 
 $this->title = Yii::t('backend', 'Create {modelClass}', [
     'modelClass' => 'Article Category',
@@ -14,9 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-category-create">
 
-    <?= $this->render('_form', [
+    <?php echo $this->render('_form', [
         'model' => $model,
-        'categories' => $categories,
+        'categories' => $categories
     ]) ?>
 
 </div>

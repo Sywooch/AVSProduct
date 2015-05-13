@@ -1,7 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
+<<<<<<< HEAD
  * User: ejay
+=======
+ * User: zein
+>>>>>>> upstream/master
  * Date: 7/3/14
  * Time: 3:14 PM
  */

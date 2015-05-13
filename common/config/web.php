@@ -3,12 +3,13 @@ $config = [
     'components' => [
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
-            'linkAssets' => false,
+            'linkAssets' => true,
             'appendTimestamp' => YII_ENV_DEV
         ]
     ],
     'as locale' => [
-        'class' => 'common\behaviors\LocaleBehavior'
+        'class' => 'common\behaviors\LocaleBehavior',
+        'enablePreferredLanguage' => true
     ]
 ];
 

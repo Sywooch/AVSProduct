@@ -1,7 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
+<<<<<<< HEAD
  * User: ejay
+=======
+ * User: zein
+>>>>>>> upstream/master
  * Date: 8/2/14
  * Time: 11:20 AM
  */
@@ -41,7 +45,7 @@ class SignInController extends Controller
             'avatar-upload' => [
                 'class' => UploadAction::className(),
                 'deleteRoute' => 'avatar-delete',
-                'on afterSave' => function($event) {
+                'on afterSave' => function ($event) {
                     /* @var $file \League\Flysystem\File */
                     $file = $event->file;
                     $img = ImageManagerStatic::make($file->read())->fit(215, 215);

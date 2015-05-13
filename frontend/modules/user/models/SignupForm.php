@@ -4,7 +4,6 @@ namespace frontend\modules\user\models;
 use common\models\User;
 use yii\base\Model;
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * Signup form

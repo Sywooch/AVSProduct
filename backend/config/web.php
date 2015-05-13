@@ -66,6 +66,7 @@ $config = [
                 'roles' => ['?'],
             ],
             [
+<<<<<<< HEAD
                 'controllers'=>[
                     'user',
                     'system-information',
@@ -83,10 +84,14 @@ $config = [
                     'widget-menu',
                     'widget-carousel',
                 ],
+=======
+                'controllers'=>['user'],
+>>>>>>> upstream/master
                 'allow' => true,
                 'roles' => ['administrator'],
             ],
             [
+<<<<<<< HEAD
                 'controllers'=>[
                     'user',
                     'system-information',
@@ -104,11 +109,18 @@ $config = [
                     'widget-menu',
                     'widget-carousel',
                 ],
+=======
+                'controllers'=>['user'],
+>>>>>>> upstream/master
                 'allow' => false,
             ],
             [
                 'allow' => true,
+<<<<<<< HEAD
                 'roles' => ['manager','publisher','advertiser'],
+=======
+                'roles' => ['manager'],
+>>>>>>> upstream/master
             ]
         ]
     ]
