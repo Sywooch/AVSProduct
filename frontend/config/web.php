@@ -43,8 +43,7 @@ $config = [
             'enableAutoLogin' => true,
             'as afterLogin' => 'common\behaviors\LoginTimestampBehavior'
         ],
-        ]
-    ]
+        ],
 ];
 
 if (YII_ENV_DEV) {

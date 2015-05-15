@@ -66,10 +66,11 @@ use yii\widgets\Breadcrumbs;
                                 </li>
                             </ul>
                         </li>
+                        <?php endif; ?>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar() ?: '/img/anonymous.jpg' ?>" class="user-image">
+                                <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar() ? : '/img/anonymous.jpg' ?>" class="user-image">
                                 <span><?php echo Yii::$app->user->identity->username ?> <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -187,7 +188,16 @@ use yii\widgets\Breadcrumbs;
                                     'badgeBgClass'=>'label-danger',
                                 ],
                             ]
-                        ]
+                        ],
+                        [
+                            'label'=>Yii::t('backend', 'Platform'),
+                            'icon'=>'<i class="fa fa-edit"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'visible'=>Yii::$app->user->can('publisher'),
+                            'items'=>[
+                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/platform/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                            ]
+                        ],
                     ]
                 ]) ?>
             </section>
@@ -219,7 +229,7 @@ use yii\widgets\Breadcrumbs;
                         'options'=>ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'options'),
                     ])?>
                 <?php endif; ?>
-                <?php echo $content ?>
+                <?php echo $content; ?>
             </section><!-- /.content -->
         </aside><!-- /.right-side -->
     </div><!-- ./wrapper -->
