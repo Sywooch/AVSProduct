@@ -191,13 +191,34 @@ use yii\widgets\Breadcrumbs;
                         ],
                         [
                             'label'=>Yii::t('backend', 'Platform'),
-                            'icon'=>'<i class="fa fa-edit"></i>',
+                            'icon'=>'<i class="fa fa-file"></i>',
                             'options'=>['class'=>'treeview'],
                             'visible'=>Yii::$app->user->can('publisher'),
                             'items'=>[
-                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/platform/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/platforms/index'], 'icon'=>'<i class="fa fa-list"></i>'],
                             ]
                         ],
+                        [
+                            'label'=>Yii::t('backend', 'Advertisement'),
+                            'icon'=>'<i class="fa fa-tags"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'visible'=>Yii::$app->user->can('publisher'),
+                            'items'=>[
+                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/advertisements/index'], 'icon'=>'<i class="fa fa-list"></i>'],
+                                ['label'=>Yii::t('backend', 'Generate'), 'url'=>['/advertisements/generate'], 'icon'=>'<i class="fa fa-random"></i>'],
+                            ]
+                        ],
+                        [
+                            'label'=>Yii::t('backend', 'Statistics'),
+                            'icon'=>'<i class="fa fa-signal"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'visible'=>Yii::$app->user->can('publisher'),
+                            'items'=>[
+                                ['label'=>Yii::t('backend', 'All stats'), 'url'=>['/statistics/index'], 'icon'=>'<i class="fa fa-inbox"></i>'],
+                                ['label'=>Yii::t('backend', 'Generate'), 'url'=>['/statistics/view'], 'icon'=>'<i class="fa fa-random"></i>'],
+                            ]
+                        ],
+
                     ]
                 ]) ?>
             </section>
