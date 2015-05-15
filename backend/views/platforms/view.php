@@ -5,6 +5,7 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Platforms */
+/* @var $user common\models\User*/
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Platforms'), 'url' => ['index']];
@@ -27,16 +28,30 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_id',
             'name',
             'url:url',
             [
-                'label' => Yii::t( 'backend', 'status' ),
+                'label' => Yii::t( 'backend', 'Status' ),
                 'value' => $model->getStatusName(),
             ],
             'created_at:datetime',
             'updated_at:datetime',
         ],
     ]) ?>
+
+
+    <?php
+    if(Yii::$app->user->can('administrator'))
+    {
+        echo DetailView::widget([
+            'model'=> $model->getUser()->One(),
+            'attributes'=>[
+                'id',
+                'username',
+                'email',
+            ]
+        ]);
+    }
+    ?>
 
 </div>
