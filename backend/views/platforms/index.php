@@ -30,7 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'url:url',
             [
                 'attribute'=> 'status',
-                'filter'=> true,
+                'filter'=> [
+                    \app\models\Platforms::STATUS_BANNED => Yii::t('backend','Banned'),
+                    \app\models\Platforms::STATUS_MODERATE => Yii::t('backend','Moderate'),
+                    \app\models\Platforms::STATUS_ACTIVE => Yii::t('backend','Active'),
+                ],
                 'label' => Yii::t( 'backend', 'Status' ),
                 'value' => function ($model) {
                     return $model->getStatusName();
