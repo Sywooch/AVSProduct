@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\search\ArticleCategorySearch */
+/* @var $searchModel app\models\search\AdsCategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Article Categories');
+$this->title = Yii::t('backend', 'Ads Categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="article-category-index">
+<div class="ads-category-index">
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-            'modelClass' => 'Article Category',
-        ]), ['create'], ['class' => 'btn btn-success']) ?>
+    'modelClass' => 'Ads Category',
+]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php echo GridView::widget([
@@ -27,14 +27,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'slug',
-            'title',
-            'status',
+            'name',
+            'created_at:datetime',
+            'updated_at:datetime',
 
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'template'=>'{update} {delete}'
-            ],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

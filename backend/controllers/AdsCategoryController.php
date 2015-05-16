@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Platforms;
-use app\models\search\searchPlatforms;
+use app\models\AdsCategory;
+use app\models\search\AdsCategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PlatformsController implements the CRUD actions for Platforms model.
+ * AdsCategoryController implements the CRUD actions for AdsCategory model.
  */
-class PlatformsController extends Controller
+class AdsCategoryController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class PlatformsController extends Controller
     }
 
     /**
-     * Lists all Platforms models.
+     * Lists all AdsCategory models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new searchPlatforms();
+        $searchModel = new AdsCategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class PlatformsController extends Controller
     }
 
     /**
-     * Displays a single Platforms model.
+     * Displays a single AdsCategory model.
      * @param integer $id
      * @return mixed
      */
@@ -54,18 +54,16 @@ class PlatformsController extends Controller
     }
 
     /**
-     * Creates a new Platforms model.
+     * Creates a new AdsCategory model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Platforms();
+        $model = new AdsCategory();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->user_id = Yii::$app->getUser()->id;
-            $model->status = $model::STATUS_MODERATE;
-            $model->created_at = time('now');
+            $model->created_at = time();
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -76,7 +74,7 @@ class PlatformsController extends Controller
     }
 
     /**
-     * Updates an existing Platforms model.
+     * Updates an existing AdsCategory model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -97,7 +95,7 @@ class PlatformsController extends Controller
     }
 
     /**
-     * Deletes an existing Platforms model.
+     * Deletes an existing AdsCategory model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +108,15 @@ class PlatformsController extends Controller
     }
 
     /**
-     * Finds the Platforms model based on its primary key value.
+     * Finds the AdsCategory model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Platforms the loaded model
+     * @return AdsCategory the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Platforms::findOne($id)) !== null) {
+        if (($model = AdsCategory::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -129,6 +129,9 @@ use yii\widgets\Breadcrumbs;
                     'submenuTemplate'=>"\n<ul class=\"treeview-menu\">\n{items}\n</ul>\n",
                     'activateParents'=>true,
                     'items'=>[
+                        /**
+                         * This menu for Admin
+                         */
                         [
                             'label'=>Yii::t('backend', 'Timeline'),
                             'icon'=>'<i class="fa fa-bar-chart-o"></i>',
@@ -188,6 +191,12 @@ use yii\widgets\Breadcrumbs;
                                     'badgeBgClass'=>'label-danger',
                                 ],
                             ]
+                        ],
+                        [
+                            'label'=>Yii::t('backend', 'Advertisement category'),
+                            'icon'=>'<i class="fa fa-edit"></i>',
+                            'url'=>['/ads-category/index'],
+                            'visible'=>Yii::$app->user->can('administrator'),
                         ],
                         /**
                          * This menu for Publisher

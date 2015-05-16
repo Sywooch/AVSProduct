@@ -1,10 +1,6 @@
 <?php
 /**
-<<<<<<< HEAD
  * Avseenko Andrey <bropwnz0r@gmail.com>
-=======
- * Eugine Terentev <eugine@terentev.net>
->>>>>>> upstream/master
  */
 
 namespace backend\controllers;
