@@ -32,7 +32,7 @@ class m150515_163743_platforms extends Migration
         if ($this->db->driverName === 'mysql') {
             $this->dropForeignKey('fk_geodata', '{{%user_geodata}}');
         }
-        $this->dropTable('{{%user_geodata}}');
+        $this->dropTable('{{%platforms}}');
     }
     
     /*
