@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 use yii\helpers\Html;
 
