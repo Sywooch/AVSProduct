@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\search\AdsCategorySearch */
+/* @var $model app\models\search\AdscategorySearch */
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="ads-category-search">
+<div class="adscategory-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],

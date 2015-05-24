@@ -4,15 +4,15 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\AdsCategory */
+/* @var $model app\models\Adscategory */
 
 $this->title = Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Ads Category',
+    'modelClass' => 'Adscategory',
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Ads Categories'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Adscategories'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="ads-category-create">
+<div class="adscategory-create">
 
     <?php echo $this->render('_form', [
         'model' => $model,

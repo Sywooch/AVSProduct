@@ -12,7 +12,7 @@ class m150516_081837_advertisement_category extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%advertisement_category}}', [
+        $this->createTable('{{%adscategory}}', [
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING . '(64) NOT NULL',
             'created_at' => Schema::TYPE_INTEGER,

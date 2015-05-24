@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\search\searchPlatforms */
+/* @var $model app\models\search\AdsSearch */
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="platforms-search">
+<div class="ads-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,13 +17,15 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'id') ?>
 
-    <?php echo $form->field($model, 'user_id') ?>
+    <?php echo $form->field($model, 'banner_path') ?>
+
+    <?php echo $form->field($model, 'banner_base_url') ?>
 
     <?php echo $form->field($model, 'name') ?>
 
-    <?php echo $form->field($model, 'url') ?>
-
     <?php echo $form->field($model, 'status') ?>
+
+    <?php // echo $form->field($model, 'type_size') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 

@@ -216,8 +216,8 @@ use yii\widgets\Breadcrumbs;
                             'options'=>['class'=>'treeview'],
                             'visible'=>Yii::$app->user->can('publisher'),
                             'items'=>[
-                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/advertisements/index'], 'icon'=>'<i class="fa fa-list"></i>'],
-                                ['label'=>Yii::t('backend', 'Generate'), 'url'=>['/advertisements/generate'], 'icon'=>'<i class="fa fa-random"></i>'],
+                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/ads/index'], 'icon'=>'<i class="fa fa-list"></i>'],
+                                ['label'=>Yii::t('backend', 'Generate'), 'url'=>['/ads/generate'], 'icon'=>'<i class="fa fa-random"></i>'],
                             ]
                         ],
                         [
@@ -239,7 +239,7 @@ use yii\widgets\Breadcrumbs;
                             'options'=>['class'=>'treeview'],
                             'visible'=>Yii::$app->user->can('advertiser'),
                             'items'=>[
-                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/advertisements/index'], 'icon'=>'<i class="fa fa-list"></i>'],
+                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/ads/index'], 'icon'=>'<i class="fa fa-list"></i>'],
                             ]
                         ],
                         [
