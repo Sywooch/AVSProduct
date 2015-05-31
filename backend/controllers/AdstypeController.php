@@ -2,22 +2,17 @@
 
 namespace backend\controllers;
 
-use app\models\Adstype;
-use app\models\Adscategory;
 use Yii;
-use app\models\Ads;
-use app\models\search\AdsSearch;
+use app\models\Adstype;
+use app\models\search\AdstypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use Intervention\Image\ImageManagerStatic;
-use trntv\filekit\actions\DeleteAction;
-use trntv\filekit\actions\UploadAction;
 
 /**
- * AdsController implements the CRUD actions for Ads model.
+ * AdstypeController implements the CRUD actions for Adstype model.
  */
-class AdsController extends Controller
+class AdstypeController extends Controller
 {
     public function behaviors()
     {
@@ -32,33 +27,12 @@ class AdsController extends Controller
     }
 
     /**
-     * @return array
-     */
-    public function actions()
-    {
-        return [
-            'banner-upload' => [
-                'class' => UploadAction::className(),
-                'deleteRoute' => 'banner-delete',
-                'on afterSave' => function ($event) {
-                    /* @var $file \League\Flysystem\File */
-                    $file = $event->file;
-                    $img = ImageManagerStatic::make($file->read())->fit(215, 215);
-                    $file->put($img->encode());
-                }
-            ],
-            'banner-delete' => [
-                'class' => DeleteAction::className()
-            ]
-        ];
-    }
-    /**
-     * Lists all Ads models.
+     * Lists all Adstype models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AdsSearch();
+        $searchModel = new AdstypeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -68,7 +42,7 @@ class AdsController extends Controller
     }
 
     /**
-     * Displays a single Ads model.
+     * Displays a single Adstype model.
      * @param integer $id
      * @return mixed
      */
@@ -80,27 +54,25 @@ class AdsController extends Controller
     }
 
     /**
-     * Creates a new Ads model.
+     * Creates a new Adstype model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Ads();
+        $model = new Adstype();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'adstype'=> Adstype::find()->all(),
-                'categories'=>Adscategory::find()->all(),
             ]);
         }
     }
 
     /**
-     * Updates an existing Ads model.
+     * Updates an existing Adstype model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -114,14 +86,12 @@ class AdsController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'adstype'=> Adstype::find()->all(),
-                'categories'=>Adscategory::find()->all(),
             ]);
         }
     }
 
     /**
-     * Deletes an existing Ads model.
+     * Deletes an existing Adstype model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -134,15 +104,15 @@ class AdsController extends Controller
     }
 
     /**
-     * Finds the Ads model based on its primary key value.
+     * Finds the Adstype model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Ads the loaded model
+     * @return Adstype the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Ads::findOne($id)) !== null) {
+        if (($model = Adstype::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

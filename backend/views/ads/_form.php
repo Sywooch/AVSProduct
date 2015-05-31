@@ -21,7 +21,13 @@ use yii\bootstrap\ActiveForm;
             $adstype,
             'id',
             'name'
-        ), ['prompt'=>'']); ?>
+        ), ['prompt'=>Yii::t('app','Select type')]); ?>
+
+    <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(
+        $categories,
+        'id',
+        'name'
+    ), ['prompt'=>Yii::t('app','Select category')]); ?>
 
     <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

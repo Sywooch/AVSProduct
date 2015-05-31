@@ -64,8 +64,8 @@ class Adscategory extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAdsCategories()
-    {
-        return $this->hasMany(AdsCategory::className(), ['ads_category_id' => 'id']);
-    }
+//    public function getAdsCategories()
+//    {
+//        return $this->hasMany(AdsCategory::className(), ['ads_category_id' => 'id']);
+//    }
 }

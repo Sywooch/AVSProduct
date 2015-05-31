@@ -82,7 +82,9 @@ class Ads extends \yii\db\ActiveRecord
             'banner_base_url' => Yii::t('app', 'Banner Base Url'),
             'name' => Yii::t('app', 'Name'),
             'status' => Yii::t('app', 'Status'),
-            'type_id' => Yii::t('app', 'Type id'),
+            'user_id'=> Yii::t('app','User ID'),
+            'type_id' => Yii::t('app', 'Type ID'),
+            'category_id'=>Yii::t('app', 'Category ID'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
