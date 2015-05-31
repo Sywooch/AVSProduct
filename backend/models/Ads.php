@@ -15,6 +15,8 @@ use Yii;
  * @property string $name
  * @property integer $status
  * @property integer $type_id
+ * @property integer $category_id
+ * @property integer $user_id
  * @property integer $created_at
  * @property integer $updated_at
  *
@@ -63,10 +65,11 @@ class Ads extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['status', 'type_id', 'created_at', 'updated_at'], 'integer'],
+            [['status', 'type_id', 'created_at', 'updated_at','category_id','user_id'], 'integer'],
             [['banner_path', 'banner_base_url'], 'string', 'max' => 255],
             [['name'], 'string', 'max' => 128],
             [['type_id'],'required'],
+            [['category_id'], 'required'],
             ['picture', 'safe'],
         ];
     }
@@ -90,13 +93,13 @@ class Ads extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAdsCategories()
-    {
-        return $this->hasMany(AdsCategory::className(), ['ads_id' => 'id']);
-    }
+//    /**
+//     * @return \yii\db\ActiveQuery
+//     */
+//    public function getAdsCategories()
+//    {
+//        return $this->hasMany(AdsCategory::className(), ['ads_id' => 'id']);
+//    }
 
     /**
      * @return \yii\db\ActiveQuery
