@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m150516_081837_advertisement_category extends Migration
+class m150531_075902_adstype extends Migration
 {
     public function up()
     {
@@ -12,17 +12,25 @@ class m150516_081837_advertisement_category extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%adscategory}}', [
+        $this->createTable('{{%adstype}}', [
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING . '(64) NOT NULL',
-            'created_at' => Schema::TYPE_INTEGER,
-            'updated_at' => Schema::TYPE_INTEGER,
+            'height' => Schema::TYPE_INTEGER,
+            'width' => Schema::TYPE_INTEGER,
         ], $tableOptions);
+        //todo migrate not work
+        if ($this->db->driverName === 'mysql') {
+            $this->addForeignKey('fk_adstype', '{{%adstype}}', 'id', '{{%ads}}', 'type_id', 'cascade', 'cascade');
+        }
     }
 
     public function down()
     {
-        $this->dropTable('{{%adscategory}}');
+        if ($this->db->driverName === 'mysql') {
+            $this->dropForeignKey('fk_adstype', '{{%adstype}}');
+        }
+
+        $this->dropTable('{{%adstype}}');
     }
     
     /*

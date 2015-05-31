@@ -8,6 +8,9 @@ use app\models\search\AdsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Intervention\Image\ImageManagerStatic;
+use trntv\filekit\actions\DeleteAction;
+use trntv\filekit\actions\UploadAction;
 
 /**
  * AdsController implements the CRUD actions for Ads model.
@@ -26,6 +29,27 @@ class AdsController extends Controller
         ];
     }
 
+    /**
+     * @return array
+     */
+    public function actions()
+    {
+        return [
+            'banner-upload' => [
+                'class' => UploadAction::className(),
+                'deleteRoute' => 'banner-delete',
+                'on afterSave' => function ($event) {
+                    /* @var $file \League\Flysystem\File */
+                    $file = $event->file;
+                    $img = ImageManagerStatic::make($file->read())->fit(215, 215);
+                    $file->put($img->encode());
+                }
+            ],
+            'banner-delete' => [
+                'class' => DeleteAction::className()
+            ]
+        ];
+    }
     /**
      * Lists all Ads models.
      * @return mixed

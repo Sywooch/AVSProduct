@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
 
 /**
@@ -12,7 +13,7 @@ use Yii;
  * @property string $banner_base_url
  * @property string $name
  * @property integer $status
- * @property integer $type_size
+ * @property integer $type_id
  * @property integer $created_at
  * @property integer $updated_at
  *
@@ -20,6 +21,31 @@ use Yii;
  */
 class Ads extends \yii\db\ActiveRecord
 {
+
+    /**
+     * This const status banners
+     */
+    const STATUS_ACTIVE = 0;
+    const STATUS_DEACTIVE = 1;
+
+
+    public $picture;
+
+    public function behaviors()
+    {
+        return [
+            'picture' => [
+                'class' => UploadBehavior::className(),
+                'attribute' => 'picture',
+                'pathAttribute' => 'banner_path',
+                'baseUrlAttribute' => 'banner_base_url',
+                'typeAttribute' => true,
+                'sizeAttribute' => true,
+                'nameAttribute' => true,
+                'orderAttribute' => true
+            ]
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -35,7 +61,7 @@ class Ads extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['status', 'type_size', 'created_at', 'updated_at'], 'integer'],
+            [['status', 'type_id', 'created_at', 'updated_at'], 'integer'],
             [['banner_path', 'banner_base_url'], 'string', 'max' => 255],
             [['name'], 'string', 'max' => 128]
         ];
@@ -52,7 +78,7 @@ class Ads extends \yii\db\ActiveRecord
             'banner_base_url' => Yii::t('app', 'Banner Base Url'),
             'name' => Yii::t('app', 'Name'),
             'status' => Yii::t('app', 'Status'),
-            'type_size' => Yii::t('app', 'Type Size'),
+            'type_id' => Yii::t('app', 'Type id'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
@@ -64,5 +90,25 @@ class Ads extends \yii\db\ActiveRecord
     public function getAdsCategories()
     {
         return $this->hasMany(AdsCategory::className(), ['ads_id' => 'id']);
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusName()
+    {
+        $statuses = self::getStatusesArray();
+        return isset($statuses[$this->status]) ? $statuses[$this->status] : '';
+    }
+
+    /**
+     * @return array
+     */
+    public static function getStatusesArray()
+    {
+        return [
+            self::STATUS_ACTIVE => Yii::t('backend','Active'),
+            self::STATUS_DEACTIVE => Yii::t('backend','Deactive'),
+        ];
     }
 }
