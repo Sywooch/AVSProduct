@@ -198,6 +198,12 @@ use yii\widgets\Breadcrumbs;
                             'url'=>['/ads-category/index'],
                             'visible'=>Yii::$app->user->can('administrator'),
                         ],
+                        [
+                            'label'=>Yii::t('backend', 'Ads type'),
+                            'icon'=>'<i class="fa fa-edit"></i>',
+                            'url'=>['/adstype/index'],
+                            'visible'=>Yii::$app->user->can('administrator'),
+                        ],
                         /**
                          * This menu for Publisher
                          */

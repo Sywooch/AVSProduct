@@ -3,6 +3,7 @@
 namespace app\models;
 
 use trntv\filekit\behaviors\UploadBehavior;
+use yii\behaviors\TimestampBehavior;
 use Yii;
 
 /**
@@ -25,8 +26,8 @@ class Ads extends \yii\db\ActiveRecord
     /**
      * This const status banners
      */
-    const STATUS_ACTIVE = 0;
-    const STATUS_DEACTIVE = 1;
+    const STATUS_ACTIVE = 1;
+    const STATUS_DEACTIVE = 0;
 
 
     public $picture;
@@ -34,15 +35,16 @@ class Ads extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
+            TimestampBehavior::className(),
             'picture' => [
                 'class' => UploadBehavior::className(),
                 'attribute' => 'picture',
                 'pathAttribute' => 'banner_path',
                 'baseUrlAttribute' => 'banner_base_url',
-                'typeAttribute' => true,
-                'sizeAttribute' => true,
-                'nameAttribute' => true,
-                'orderAttribute' => true
+//                'typeAttribute' => true,
+//                'sizeAttribute' => true,
+                'nameAttribute' => false,
+//                'orderAttribute' => true
             ]
         ];
     }
@@ -63,7 +65,9 @@ class Ads extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['status', 'type_id', 'created_at', 'updated_at'], 'integer'],
             [['banner_path', 'banner_base_url'], 'string', 'max' => 255],
-            [['name'], 'string', 'max' => 128]
+            [['name'], 'string', 'max' => 128],
+            [['type_id'],'required'],
+            ['picture', 'safe'],
         ];
     }
 
@@ -92,6 +96,13 @@ class Ads extends \yii\db\ActiveRecord
         return $this->hasMany(AdsCategory::className(), ['ads_id' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAdsType()
+    {
+        return $this->hasMany(Adstype::className(), ['id' => 'type_id']);
+    }
     /**
      * @return string
      */

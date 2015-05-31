@@ -5,12 +5,12 @@ namespace app\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Ads;
+use app\models\Adscategory;
 
 /**
- * AdsSearch represents the model behind the search form about `app\models\Ads`.
+ * AdscategorySearch represents the model behind the search form about `app\models\Adscategory`.
  */
-class AdsSearch extends Ads
+class AdscategorySearch extends Adscategory
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class AdsSearch extends Ads
     public function rules()
     {
         return [
-            [['id', 'status', 'type_id', 'created_at', 'updated_at'], 'integer'],
-            [['banner_path', 'banner_base_url', 'name'], 'safe'],
+            [['id', 'created_at', 'updated_at'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class AdsSearch extends Ads
      */
     public function search($params)
     {
-        $query = Ads::find();
+        $query = Adscategory::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -53,15 +53,11 @@ class AdsSearch extends Ads
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'status' => $this->status,
-            'type_id' => $this->type_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'banner_path', $this->banner_path])
-            ->andFilterWhere(['like', 'banner_base_url', $this->banner_base_url])
-            ->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

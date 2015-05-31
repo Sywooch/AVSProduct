@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'banner_base_url:url',
             'name',
             'status',
-            'type_size',
+            'type_id',
             'created_at',
             'updated_at',
         ],

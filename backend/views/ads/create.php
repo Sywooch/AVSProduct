@@ -5,6 +5,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Ads */
+/* @var $adstype app\models\Adstype[] */
 
 $this->title = Yii::t('backend', 'Create {modelClass}', [
     'modelClass' => 'Ads',
@@ -16,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php echo $this->render('_form', [
         'model' => $model,
+        'adstype'=> $adstype,
     ]) ?>
 
 </div>

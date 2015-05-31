@@ -20,7 +20,7 @@ class m150531_075902_adstype extends Migration
         ], $tableOptions);
         //todo migrate not work
         if ($this->db->driverName === 'mysql') {
-            $this->addForeignKey('fk_adstype', '{{%adstype}}', 'id', '{{%ads}}', 'type_id', 'cascade', 'cascade');
+            $this->addForeignKey('fk_adstype', '{{%ads}}', 'type_id', '{{%adstype}}', 'id', 'cascade', 'cascade');
         }
     }
 

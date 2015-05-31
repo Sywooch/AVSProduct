@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use app\models\Adstype;
 use Yii;
 use app\models\Ads;
 use app\models\search\AdsSearch;
@@ -91,6 +92,7 @@ class AdsController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'adstype'=> Adstype::find()->all(),
             ]);
         }
     }

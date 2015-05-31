@@ -23,7 +23,7 @@ class m150518_071913_ads_main extends Migration
             'banner_base_url' => Schema::TYPE_STRING . '(255) ',
             'name'=>Schema::TYPE_STRING .'(128) NOT NULL',
             'status'=>Schema::TYPE_SMALLINT,
-            'type_size'=>Schema::TYPE_INTEGER,
+            'type_id'=>Schema::TYPE_INTEGER,
             'created_at' => Schema::TYPE_INTEGER,
             'updated_at' => Schema::TYPE_INTEGER,
         ], $tableOptions);

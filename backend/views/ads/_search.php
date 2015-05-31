@@ -25,7 +25,7 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'status') ?>
 
-    <?php // echo $form->field($model, 'type_size') ?>
+    <?php // echo $form->field($model, 'type_id') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 
