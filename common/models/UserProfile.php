@@ -36,10 +36,10 @@ class UserProfile extends \yii\db\ActiveRecord
                 'attribute' => 'picture',
                 'pathAttribute' => 'avatar_path',
                 'baseUrlAttribute' => 'avatar_base_url',
-                'typeAttribute' => false,
-                'sizeAttribute' => false,
-                'nameAttribute' => false,
-                'orderAttribute' => false
+//                'typeAttribute' => false,
+//                'sizeAttribute' => false,
+//                'nameAttribute' => false,
+//                'orderAttribute' => false
             ]
         ];
     }

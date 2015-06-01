@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Adscategory;
-use app\models\search\AdscategorySearch;
+use app\models\Adstype;
+use app\models\search\AdstypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AdsCategoryController implements the CRUD actions for Adscategory model.
+ * AdstypeController implements the CRUD actions for Adstype model.
  */
-class AdsCategoryController extends Controller
+class AdstypeController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class AdsCategoryController extends Controller
     }
 
     /**
-     * Lists all Adscategory models.
+     * Lists all Adstype models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AdscategorySearch();
+        $searchModel = new AdstypeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class AdsCategoryController extends Controller
     }
 
     /**
-     * Displays a single Adscategory model.
+     * Displays a single Adstype model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class AdsCategoryController extends Controller
     }
 
     /**
-     * Creates a new Adscategory model.
+     * Creates a new Adstype model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Adscategory();
+        $model = new Adstype();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class AdsCategoryController extends Controller
     }
 
     /**
-     * Updates an existing Adscategory model.
+     * Updates an existing Adstype model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class AdsCategoryController extends Controller
     }
 
     /**
-     * Deletes an existing Adscategory model.
+     * Deletes an existing Adstype model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,15 +104,15 @@ class AdsCategoryController extends Controller
     }
 
     /**
-     * Finds the Adscategory model based on its primary key value.
+     * Finds the Adstype model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Adscategory the loaded model
+     * @return Adstype the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Adscategory::findOne($id)) !== null) {
+        if (($model = Adstype::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
