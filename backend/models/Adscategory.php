@@ -3,25 +3,39 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+
 
 /**
- * This is the model class for table "advertisement_category".
+ * This is the model class for table "adscategory".
  *
  * @property integer $id
  * @property string $name
  * @property integer $created_at
  * @property integer $updated_at
+ *
+ * @property AdsCategory[] $adsCategories
  */
-class AdsCategory extends \yii\db\ActiveRecord
+class Adscategory extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'advertisement_category';
+        return 'adscategory';
     }
 
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -46,4 +60,12 @@ class AdsCategory extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+//    public function getAdsCategories()
+//    {
+//        return $this->hasMany(AdsCategory::className(), ['ads_category_id' => 'id']);
+//    }
 }

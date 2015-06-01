@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\search\AdscategorySearch */
+/* @var $searchModel app\models\search\AdstypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Adscategories');
+$this->title = Yii::t('backend', 'Adstypes');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="adscategory-index">
+<div class="adstype-index">
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Adscategory',
+    'modelClass' => 'Adstype',
 ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
@@ -28,8 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'created_at:datetime',
-            'updated_at:datetime',
+            'height',
+            'width',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

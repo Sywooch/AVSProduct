@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\search\AdscategorySearch */
+/* @var $model app\models\search\AdstypeSearch */
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="adscategory-search">
+<div class="adstype-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -19,9 +19,9 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'name') ?>
 
-    <?php echo $form->field($model, 'created_at') ?>
+    <?php echo $form->field($model, 'height') ?>
 
-    <?php echo $form->field($model, 'updated_at') ?>
+    <?php echo $form->field($model, 'width') ?>
 
     <div class="form-group">
         <?php echo Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>

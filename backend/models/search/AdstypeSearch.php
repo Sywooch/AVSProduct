@@ -5,12 +5,12 @@ namespace app\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\AdsCategory;
+use app\models\Adstype;
 
 /**
- * AdsCategorySearch represents the model behind the search form about `app\models\AdsCategory`.
+ * AdstypeSearch represents the model behind the search form about `app\models\Adstype`.
  */
-class AdsCategorySearch extends AdsCategory
+class AdstypeSearch extends Adstype
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class AdsCategorySearch extends AdsCategory
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'height', 'width'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -41,7 +41,7 @@ class AdsCategorySearch extends AdsCategory
      */
     public function search($params)
     {
-        $query = AdsCategory::find();
+        $query = Adstype::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -53,8 +53,8 @@ class AdsCategorySearch extends AdsCategory
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'height' => $this->height,
+            'width' => $this->width,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
