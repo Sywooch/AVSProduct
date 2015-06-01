@@ -222,8 +222,7 @@ use yii\widgets\Breadcrumbs;
                             'options'=>['class'=>'treeview'],
                             'visible'=>Yii::$app->user->can('publisher'),
                             'items'=>[
-//                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/ads/index'], 'icon'=>'<i class="fa fa-list"></i>'],
-                                ['label'=>Yii::t('backend', 'Generate'), 'url'=>['/ads/generate'], 'icon'=>'<i class="fa fa-random"></i>'],
+                                ['label'=>Yii::t('backend', 'Generate'), 'url'=>['/block-code/index'], 'icon'=>'<i class="fa fa-random"></i>'],
                             ]
                         ],
                         [
