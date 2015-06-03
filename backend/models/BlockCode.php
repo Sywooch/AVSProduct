@@ -5,6 +5,7 @@ namespace backend\models;
 use backend\models\Ads;
 use backend\models\CodeblocksAdscategories;
 use common\behaviors\BlockCodeBehavior;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use backend\models\Platforms;
@@ -84,25 +85,27 @@ class BlockCode extends \yii\db\ActiveRecord
         return $this->hasOne(Platforms::className(), ['id' => 'platform_id']);
     }
 
+    /**
+     * Возвращает актуальное объявление
+     * @param $hash_block
+     * @param $host
+     * @return array advertisment
+     */
     public function getImgUrl($hash_block, $host)
     {
         $block_code = BlockCode::find()->where(['hash_block'=>$hash_block])->one();
-        echo '<pre>';
-
         $param['blockcode_id'] = $block_code['id'];
         $param['platform_id'] = $block_code['platform_id'];
         $param['type_id'] = $block_code['adstype_id'];
-
 
         $platform = Platforms::find()->where(['id'=>$param['platform_id'],'status'=>Platforms::STATUS_ACTIVE])->one();
         if(!empty($platform))
         {
             if($this->getHost($platform['url'])!=$this->getHost($host))
             {
-                return array('BadPlatform'=>'This not valid platform');
+                return array('name'=>'Exception403');
             }
         }
-
         $categories_id = CodeblocksAdscategories::find()->where(['blockcode_id'=>$param['blockcode_id']])->all();
         if(is_array($categories_id))
         {
@@ -111,15 +114,20 @@ class BlockCode extends \yii\db\ActiveRecord
                 $categories[] = $category_id['adscategory_id'];
             }
         }
-//        $ads = Ads::find()->where(['status'=>Ads::STATUS_ACTIVE,'type_id'=>$param['type_id'], 'category_id'=>])->all();
-//        $category_in = array();
-//        $category_in = ArrayHelper::getColumn($categories, function ($id) {
-//             return $id;
-//        });
-        print_r($categories);
-
-        die();
-        return $categories_id;
+        $ads = Ads::find()->where(['status'=>Ads::STATUS_ACTIVE,'type_id'=>$param['type_id'], 'category_id'=>$categories])->all();
+        foreach($ads as $advertisement)
+        {
+            $views = $advertisement->getView()->all();
+            $sortAds[$advertisement->id] = count($views);
+            $adsArray[$advertisement->id]['picture'] = $advertisement->picture;
+            $adsArray[$advertisement->id]['id'] = $advertisement->id;
+            $adsArray[$advertisement->id]['action_url'] = $advertisement->action_url;
+        }
+        asort($sortAds);
+        $currentAds = key($sortAds);
+        $adsView = new AdsViews();
+        $adsView->actionView($currentAds,$param['platform_id']);
+        return $adsArray[$currentAds];
     }
 
     public function getHost($Address) {

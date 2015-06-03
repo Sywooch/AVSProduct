@@ -51,9 +51,6 @@ class BannerController extends ActiveController
     public function actionAds()
     {
         $banner = new Banner();
-//        echo '<pre>';
-//        print_r($banner->getImgUrl($hash_block));
-//        die();
         die(json_encode($banner->getImgUrl(Yii::$app->request->get('hash_block'), Yii::$app->request->get('host'))));
     }
     /**
