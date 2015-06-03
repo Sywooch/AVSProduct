@@ -4,9 +4,9 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Ads */
+/* @var $model backend\models\Ads */
 /* @var $adstype app\models\Adstype[] */
-/* @var $categories app\models\Adscategory[] */
+/* @var $categories backend\models\Adscategory[] */
 
 $this->title = Yii::t('backend', 'Create {modelClass}', [
     'modelClass' => 'Ads',

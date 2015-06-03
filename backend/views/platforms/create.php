@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Platforms */
+/* @var $model backend\models\Platforms */
 
 $this->title = Yii::t('backend', 'Create {modelClass}', [
     'modelClass' => 'Platforms',

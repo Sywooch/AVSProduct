@@ -57,11 +57,4 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
-
-    public function actionGetip()
-    {
-        $user = new User();
-        $geo = Yii::$app->ipgeobase->getLocation($user->getClientIp());
-        print_r($geo['ip']);
-    }
 }

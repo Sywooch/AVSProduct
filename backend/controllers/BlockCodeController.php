@@ -2,13 +2,13 @@
 
 namespace backend\controllers;
 
-use app\models\Adscategory;
-use app\models\Adstype;
-use app\models\CodeblocksAdscategories;
-use app\models\Platforms;
+use backend\models\Adscategory;
+use backend\models\Adstype;
+use backend\models\CodeblocksAdscategories;
+use backend\models\Platforms;
 use Yii;
-use app\models\BlockCode;
-use app\models\search\BlockCodeSearch;
+use backend\models\BlockCode;
+use backend\models\search\BlockCodeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

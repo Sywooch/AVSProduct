@@ -4,10 +4,10 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\BlockCode */
-/* @var $platforms app\models\Platforms[] */
-/* @var $categories app\models\Adscategory[] */
-/* @var $adstype app\models\Adstype[] */
+/* @var $model backend\models\BlockCode */
+/* @var $platforms backend\models\Platforms[] */
+/* @var $categories backend\models\Adscategory[] */
+/* @var $adstype backend\models\Adstype[] */
 
 $this->title = Yii::t('backend', 'Create {modelClass}', [
     'modelClass' => 'Block Code',

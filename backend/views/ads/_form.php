@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Ads */
+/* @var $model backend\models\Ads */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $adstype app\models\Adstype[] */
 

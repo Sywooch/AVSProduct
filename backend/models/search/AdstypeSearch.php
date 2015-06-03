@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models\search;
+namespace backend\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Adstype;
+use backend\models\Adstype;
 
 /**
  * AdstypeSearch represents the model behind the search form about `app\models\Adstype`.
