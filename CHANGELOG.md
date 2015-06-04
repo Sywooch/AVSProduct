@@ -1,11 +1,18 @@
 Yii Starter Kit Change Log
 ==========================
 
+2.1.0 under development
+-----------------------
+- Enh #189: Added command bus
+- Changed application setup proccess 
+- Enh #184: Preserve article attachments file name
+- Enh #176: Added ability to set custom view for static pages and articles
 2.0.0 under development
 -----------------------
 next
 ----
 - Enh #160: LocaleBehavior::enablePreferredLanguage
+- fixes and improvements
 
 2.0.0 
 -----
