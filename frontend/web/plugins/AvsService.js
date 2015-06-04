@@ -4,14 +4,13 @@
 $(document).ready(function (){
     templateImg();
     loadImg();
-
     eventImg();
 });
 /**
  * Template Img block
  */
 function templateImg(){
-    imageTag = '<a id="AvsAction" href="#"><img id="%id%" src="%path%"/></a>';
+    imageTag = '<a href="#"><img id="%id%" src="%path%"/></a>';
 }
 /**
  * ajax request current img info
@@ -40,14 +39,20 @@ function loadImg(){
  * event image and request add info
  */
 function eventImg(){
-    $('#AvsAction').click(function(){
-        alert('click banner');
+    $('#AvsBlock').click(function(){
+        var domain = location.protocol+'//'+location.host;
+        var ipAddress = myIP();
+        var ads_id = $(this).find('img').attr('id');
         $.ajax({
             url: 'http://avsproduct.local/api/v1/banner/event',
             type: 'POST',
             dataType: 'json',
             crossDomain: true,
-            data: {},
+            data: {
+                ipAddress:ipAddress,
+                ads_id:ads_id,
+                domain:domain
+            },
             success: function(data){
             }
         });
@@ -62,3 +67,19 @@ String.prototype.replaceArray = function(find, replace) {
     }
     return replaceString;
 };
+
+function myIP() {
+    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+    xmlhttp.send();
+
+    hostipInfo = xmlhttp.responseText.split("\n");
+
+    for (i=0; hostipInfo.length >= i; i++) {
+        ipAddress = hostipInfo[i].split(":");
+        if ( ipAddress[0] == "IP" ) return ipAddress[1];
+    }
+    return false;
+}

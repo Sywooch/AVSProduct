@@ -136,4 +136,9 @@ class Ads extends \yii\db\ActiveRecord
     {
         return $this->hasMany(AdsViews::className(), ['ads_id' => 'id']);
     }
+
+    public function getEvent()
+    {
+        return $this->hasMany(Ads::className(), ['ads_id' => 'id']);
+    }
 }

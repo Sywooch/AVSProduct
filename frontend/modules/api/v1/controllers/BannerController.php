@@ -1,6 +1,8 @@
 <?php
 namespace frontend\modules\api\v1\controllers;
 
+use backend\models\AdsEvents;
+use backend\models\Platforms;
 use Yii;
 use frontend\modules\api\v1\resources\Banner;
 use yii\data\ActiveDataProvider;
@@ -48,10 +50,21 @@ class BannerController extends ActiveController
         ];
     }
 
+    /**
+     * @return json data
+     */
     public function actionAds()
     {
         $banner = new Banner();
         die(json_encode($banner->getImgUrl(Yii::$app->request->get('hash_block'), Yii::$app->request->get('host'))));
+    }
+
+    public function actionEvent()
+    {
+        $event = new AdsEvents();
+        $platform = Platforms::find()->where(['like', 'url', Yii::$app->request->post('domain')])->one();
+        $event->checkUniqueEvent(Yii::$app->request->post('ipAddress'), Yii::$app->request->post('ads_id'), $platform->id);
+//        $event->setEvent();
     }
     /**
      * @return ActiveDataProvider
