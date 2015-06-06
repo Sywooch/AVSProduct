@@ -16,6 +16,7 @@ class m150603_183127_adsviews extends Migration
             'id' => Schema::TYPE_PK,
             'ads_id' => Schema::TYPE_INTEGER,
             'platform_id' => Schema::TYPE_INTEGER,
+            'unique'=>Schema::TYPE_STRING . '(7) NOT NULL',
             'created_at' => Schema::TYPE_INTEGER,
             'updated_at' => Schema::TYPE_INTEGER,
         ], $tableOptions);

@@ -51,6 +51,7 @@ class AdsViews extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'ads_id' => Yii::t('app', 'Ads ID'),
             'platform_id' => Yii::t('app', 'platform_id'),
+            'unique'=> Yii::t('app', 'Unique'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
@@ -64,10 +65,11 @@ class AdsViews extends \yii\db\ActiveRecord
         return $this->hasOne(Ads::className(), ['id' => 'ads_id']);
     }
 
-    public function actionView($id, $platform_id)
+    public function setView($id, $platform_id, $unique)
     {
         $this->ads_id = $id;
         $this->platform_id = $platform_id;
+        $this->unique = $unique;
         $this->save();
     }
 }

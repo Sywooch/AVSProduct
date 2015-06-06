@@ -57,6 +57,7 @@ class AdsEvents extends \yii\db\ActiveRecord
             'platform_id' => Yii::t('app', 'Platform ID'),
             'event' => Yii::t('app', 'Event'),
             'ipAddress' => Yii::t('app', 'Ip Address'),
+            'banned_time'=> Yii::t('app', 'Banned time'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
@@ -100,12 +101,12 @@ class AdsEvents extends \yii\db\ActiveRecord
         if(!empty($events))
         {
             foreach ($events as $event) {
-                if(time() - $event->banned_time)
+                if(time()>= $event->banned_time)
                 {
                     return true;
                 }
             }
         }
-        return true;
+        return false;
     }
 }

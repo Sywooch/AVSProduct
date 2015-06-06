@@ -2,6 +2,7 @@
 namespace frontend\modules\api\v1\controllers;
 
 use backend\models\AdsEvents;
+use backend\models\AdsViews;
 use backend\models\Platforms;
 use Yii;
 use frontend\modules\api\v1\resources\Banner;
@@ -59,12 +60,24 @@ class BannerController extends ActiveController
         die(json_encode($banner->getImgUrl(Yii::$app->request->get('hash_block'), Yii::$app->request->get('host'))));
     }
 
+    /**
+     * action View banner
+     */
+    public function actionViewAds()
+    {
+        $view = new AdsViews();
+        $platform = Platforms::find()->where(['like', 'url', Yii::$app->request->post('domain')])->one();
+        $view->setView(Yii::$app->request->post('ads_id'),$platform->id, Yii::$app->request->post('unique'));
+    }
+
     public function actionEvent()
     {
         $event = new AdsEvents();
         $platform = Platforms::find()->where(['like', 'url', Yii::$app->request->post('domain')])->one();
-        $event->checkUniqueEvent(Yii::$app->request->post('ipAddress'), Yii::$app->request->post('ads_id'), $platform->id);
-//        $event->setEvent();
+        if($event->checkUniqueEvent(Yii::$app->request->post('ipAddress'), Yii::$app->request->post('ads_id'), $platform->id))
+        {
+            $event->setEvent(Yii::$app->request->post('ipAddress'), Yii::$app->request->post('ads_id'), $platform->id, 1);
+        }
     }
     /**
      * @return ActiveDataProvider

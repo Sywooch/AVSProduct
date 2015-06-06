@@ -31,6 +31,24 @@ function loadImg(){
                     [data.id, data.picture.base_url+'/'+data.picture.path, data.action_url]
                 ));
                 $('#AvsBlock').append(img);
+                if(!getCookie('uniqueUser')){
+                    setCookie('uniqueUser',Math.random().toString(36).substring(7),new Date(new Date().getTime() + 1 ));
+                    var ads_id = $('#AvsBlock').find('img').attr('id');
+                    var domain = location.protocol+'//'+location.host;
+                    $.ajax({
+                        url: 'http://avsproduct.local/api/v1/banner/view-ads',
+                        type: 'POST',
+                        dataType: 'json',
+                        crossDomain: true,
+                        data: {
+                            id:ads_id,
+                            domain:domain,
+                            unique:getCookie('uniqueUser')
+                        },
+                        success: function(data){
+                        }
+                    });
+                }
             }
         }
     });
@@ -40,26 +58,34 @@ function loadImg(){
  */
 function eventImg(){
     $('#AvsBlock').click(function(){
-        var domain = location.protocol+'//'+location.host;
-        var ipAddress = myIP();
-        var ads_id = $(this).find('img').attr('id');
-        $.ajax({
-            url: 'http://avsproduct.local/api/v1/banner/event',
-            type: 'POST',
-            dataType: 'json',
-            crossDomain: true,
-            data: {
-                ipAddress:ipAddress,
-                ads_id:ads_id,
-                domain:domain
-            },
-            success: function(data){
-            }
-        });
+        if(!getCookie('uniqueUserClick')) {
+            setCookie('uniqueUserClick',Math.random().toString(36).substring(7),new Date(new Date().getTime() + 1 ));
+            var domain = location.protocol+'//'+location.host;
+            var ipAddress = myIP();
+            var ads_id = $(this).find('img').attr('id');
+            $.ajax({
+                url: 'http://avsproduct.local/api/v1/banner/event',
+                type: 'POST',
+                dataType: 'json',
+                crossDomain: true,
+                data: {
+                    ipAddress:ipAddress,
+                    ads_id:ads_id,
+                    domain:domain
+                },
+                success: function(data){
+                }
+            });
+        }
     });
 
 }
-
+/**
+ * find and replace item
+ * @param find
+ * @param replace
+ * @returns {String}
+ */
 String.prototype.replaceArray = function(find, replace) {
     var replaceString = this;
     for (var i = 0; i < find.length; i++) {
@@ -68,6 +94,10 @@ String.prototype.replaceArray = function(find, replace) {
     return replaceString;
 };
 
+/**
+ * get ip address user
+ * @returns {*}
+ */
 function myIP() {
     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
     else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -82,4 +112,48 @@ function myIP() {
         if ( ipAddress[0] == "IP" ) return ipAddress[1];
     }
     return false;
+}
+/**
+ * get cookie name
+ * @param name
+ * @returns {string}
+ */
+function getCookie(name) {
+    var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+/**
+ * set cookie name;
+ * @param name
+ * @param value
+ * @param options
+ */
+function setCookie(name, value, options) {
+    options = options || {};
+
+    var expires = options.expires;
+
+    if (typeof expires == "number" && expires) {
+        var d = new Date();
+        d.setTime(d.getTime() + expires * 1000);
+        expires = options.expires = d;
+    }
+    if (expires && expires.toUTCString) {
+        options.expires = expires.toUTCString();
+    }
+
+    value = encodeURIComponent(value);
+
+    var updatedCookie = name + "=" + value;
+
+    for (var propName in options) {
+        updatedCookie += "; " + propName;
+        var propValue = options[propName];
+        if (propValue !== true) {
+            updatedCookie += "=" + propValue;
+        }
+    }
+    document.cookie = updatedCookie;
 }

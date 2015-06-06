@@ -125,8 +125,8 @@ class BlockCode extends \yii\db\ActiveRecord
         }
         asort($sortAds);
         $currentAds = key($sortAds);
-        $adsView = new AdsViews();
-        $adsView->actionView($currentAds,$param['platform_id']);
+//        $adsView = new AdsViews();
+//        $adsView->actionView($currentAds,$param['platform_id']);
         return $adsArray[$currentAds];
     }
 
