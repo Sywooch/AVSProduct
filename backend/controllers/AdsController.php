@@ -2,11 +2,11 @@
 
 namespace backend\controllers;
 
-use app\models\Adstype;
-use app\models\Adscategory;
+use backend\models\Adstype;
+use backend\models\Adscategory;
 use Yii;
-use app\models\Ads;
-use app\models\search\AdsSearch;
+use backend\models\Ads;
+use backend\models\search\AdsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

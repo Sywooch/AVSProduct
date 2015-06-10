@@ -20,6 +20,7 @@ class m150518_071913_ads_main extends Migration
             'status'=>Schema::TYPE_SMALLINT,
             'type_id'=>Schema::TYPE_INTEGER,
             'user_id'=>Schema::TYPE_INTEGER,
+            'action_url'=>Schema::TYPE_STRING . '(255) ',
             'category_id'=>Schema::TYPE_INTEGER,
             'created_at' => Schema::TYPE_INTEGER,
             'updated_at' => Schema::TYPE_INTEGER,

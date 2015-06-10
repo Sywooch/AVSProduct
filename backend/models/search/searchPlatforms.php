@@ -1,14 +1,14 @@
 <?php
 
-namespace app\models\search;
+namespace backend\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Platforms;
+use backend\models\Platforms;
 
 /**
- * searchPlatforms represents the model behind the search form about `app\models\Platforms`.
+ * searchPlatforms represents the model behind the search form about `backend\models\Platforms`.
  */
 class searchPlatforms extends Platforms
 {

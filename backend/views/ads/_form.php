@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Ads */
+/* @var $model backend\models\Ads */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $adstype app\models\Adstype[] */
 
@@ -30,6 +30,8 @@ use yii\bootstrap\ActiveForm;
     ), ['prompt'=>Yii::t('app','Select category')]); ?>
 
     <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
+    <?php echo $form->field($model, 'action_url')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'picture')->widget(Upload::classname(), [
         'url'=>['banner-upload']

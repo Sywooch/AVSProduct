@@ -2,6 +2,7 @@
 namespace common\models;
 
 use cheatsheet\Time;
+use common\commands\command\AddToTimelineCommand;
 use Yii;
 use yii\behaviors\AttributeBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -266,15 +267,15 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function afterSignup(array $profileData = [])
     {
-        TimelineEvent::log(
-            'user',
-            'signup',
-            [
+        Yii::$app->commandBus->handle(new AddToTimelineCommand([
+            'category' => 'user',
+            'event' => 'signup',
+            'data' => [
                 'publicIdentity' => $this->getPublicIdentity(),
                 'userId' => $this->getId(),
                 'created_at' => $this->created_at
             ]
-        );
+        ]));
         $profile = new UserProfile();
         $profile->locale = Yii::$app->language;
         $profile->load($profileData, '');

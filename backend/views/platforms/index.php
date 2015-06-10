@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\search\searchPlatforms */
+/* @var $searchModel backend\models\search\searchPlatforms */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('backend', 'Platforms');
@@ -31,9 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=> 'status',
                 'filter'=> [
-                    \app\models\Platforms::STATUS_BANNED => Yii::t('backend','Banned'),
-                    \app\models\Platforms::STATUS_MODERATE => Yii::t('backend','Moderate'),
-                    \app\models\Platforms::STATUS_ACTIVE => Yii::t('backend','Active'),
+                    \backend\models\Platforms::STATUS_BANNED => Yii::t('backend','Banned'),
+                    \backend\models\Platforms::STATUS_MODERATE => Yii::t('backend','Moderate'),
+                    \backend\models\Platforms::STATUS_ACTIVE => Yii::t('backend','Active'),
                 ],
                 'label' => Yii::t( 'backend', 'Status' ),
                 'value' => function ($model) {
