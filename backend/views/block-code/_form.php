@@ -6,10 +6,10 @@ use yii\web\JqueryAsset;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\BlockCode */
+/* @var $model backend\models\BlockCode */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $platforms app\models\Platforms[] */
-/* @var $categories app\models\Adscategory[] */
+/* @var $platforms backend\models\Platforms[] */
+/* @var $categories backend\models\Adscategory[] */
 
 $this->registerJsFile("@web/plugin/bs/bs-wizard.js", ['depends' => [JqueryAsset::className()]]);
 $this->registerCssFile("@web/plugin/bs/bs-wizard-min.css");
@@ -71,7 +71,7 @@ $this->registerCssFile("@web/plugin/bs/bs-wizard-min.css");
                 <div class="bs-step inv">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Pleaes review your details and sign up</h3>
+                            <h3 class="panel-title"><?php echo Yii::t('app','Generate code block') ?></h3>
                         </div>
                         <div class="panel-body bs-step-inner">
 
@@ -79,8 +79,6 @@ $this->registerCssFile("@web/plugin/bs/bs-wizard-min.css");
                             <div class="clearfix"></div>
                             <button id="last-back" type="reset" class="btn btn-default">Go Back</button>
                                 <?php echo Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-
-<!--                            <button id="btn-signup" type="submit" class="btn btn-primary submit-btn">Sign Up</button>-->
                         </div>
                     </div>
                 </div>

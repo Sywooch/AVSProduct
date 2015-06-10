@@ -98,6 +98,7 @@ class AdsEvents extends \yii\db\ActiveRecord
         $events = $this->find()
             ->where(['ipAddress'=>$ipAddress, 'ads_id'=>$ads_id, 'platform_id'=>$platform_id])
             ->all();
+        print_r($events);
         if(!empty($events))
         {
             foreach ($events as $event) {
@@ -105,8 +106,9 @@ class AdsEvents extends \yii\db\ActiveRecord
                 {
                     return true;
                 }
+                return false;
             }
         }
-        return false;
+        return true;
     }
 }

@@ -16,6 +16,7 @@ class m150601_092133_codegen extends Migration
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING . '(64) NOT NULL',
             'platform_id' => Schema::TYPE_INTEGER,
+            'adstype_id' => Schema::TYPE_INTEGER,
             'hash_block' => Schema::TYPE_STRING . '(128) NOT NULL',
             'created_at' => Schema::TYPE_INTEGER,
             'updated_at' => Schema::TYPE_INTEGER,
@@ -23,6 +24,7 @@ class m150601_092133_codegen extends Migration
 
         if ($this->db->driverName === 'mysql') {
             $this->addForeignKey('fk_blockcode', '{{%block_code}}', 'platform_id', '{{%platforms}}', 'id', 'cascade', 'cascade');
+            $this->addForeignKey('fk_blockcode_ads', '{{%block_code}}', 'adstype_id', '{{%platforms}}', 'id', 'cascade', 'cascade');
         }
     }
 
@@ -30,6 +32,7 @@ class m150601_092133_codegen extends Migration
     {
         if ($this->db->driverName === 'mysql') {
             $this->dropForeignKey('fk_blockcode','{{%block_code}}');
+            $this->dropForeignKey('fk_blockcode_ads','{{%block_code}}');
 
         }
         $this->dropTable('{{%block_code}}');

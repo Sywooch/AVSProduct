@@ -17,6 +17,7 @@ class m150603_230522_ads_events extends Migration
             'ads_id' => Schema::TYPE_INTEGER,
             'platform_id' => Schema::TYPE_INTEGER,
             'event' => Schema::TYPE_INTEGER,
+            'banned_time' => Schema::TYPE_INTEGER,
             'ipAddress' => Schema::TYPE_STRING . '(128) NOT NULL',
             'created_at' => Schema::TYPE_INTEGER,
             'updated_at' => Schema::TYPE_INTEGER,

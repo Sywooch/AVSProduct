@@ -204,6 +204,15 @@ use yii\widgets\Breadcrumbs;
                             'url'=>['/adstype/index'],
                             'visible'=>Yii::$app->user->can('administrator'),
                         ],
+                        [
+                            'label'=>Yii::t('backend', 'Platform'),
+                            'icon'=>'<i class="fa fa-file"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'visible'=>Yii::$app->user->can('administrator'),
+                            'items'=>[
+                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/platforms/index'], 'icon'=>'<i class="fa fa-list"></i>'],
+                            ]
+                        ],
                         /**
                          * This menu for Publisher
                          */

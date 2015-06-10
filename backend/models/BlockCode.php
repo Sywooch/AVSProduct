@@ -18,6 +18,7 @@ use yii\helpers\ArrayHelper;
  * @property string $name
  * @property integer $platform_id
  * @property string $hash_block
+ * @property integer adstype_id
  * @property integer $created_at
  * @property integer $updated_at
  *
@@ -71,9 +72,9 @@ class BlockCode extends \yii\db\ActiveRecord
             'name' => Yii::t('app', 'Name'),
             'platform_id' => Yii::t('app', 'Platform ID'),
             'hash_block' => Yii::t('app', 'Hash Block'),
+            'adstype_id' => Yii::t('app', 'Adstype'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
-            'adstype' => Yii::t('app', 'Adstype'),
         ];
     }
 
@@ -119,9 +120,12 @@ class BlockCode extends \yii\db\ActiveRecord
         {
             $views = $advertisement->getView()->all();
             $sortAds[$advertisement->id] = count($views);
+            $ads_type = $advertisement->getAdsType()->One();
             $adsArray[$advertisement->id]['picture'] = $advertisement->picture;
             $adsArray[$advertisement->id]['id'] = $advertisement->id;
             $adsArray[$advertisement->id]['action_url'] = $advertisement->action_url;
+            $adsArray[$advertisement->id]['height'] = $ads_type->height;
+            $adsArray[$advertisement->id]['width'] = $ads_type->width;
         }
         asort($sortAds);
         $currentAds = key($sortAds);

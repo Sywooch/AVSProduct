@@ -35,4 +35,13 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <textarea class="form-control" rows="6">
+                <div id="AvsBlock" data-hash="<?php echo $model->hash_block ?>"></div>
+                <script src="<?php echo Yii::$app->urlManagerFrontend->hostInfo .'/plugins/AvsLoad.js';?>"></script>
+            </textarea>
+        </div>
+    </div>
+
 </div>

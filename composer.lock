@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3d26ed4f0c96618effd0c75145e4993e",
+    "hash": "0bb821dff36da40203e5f3bb206b78b0",
     "packages": [
         {
             "name": "asofter/yii2-imperavi-redactor",
@@ -75,16 +75,16 @@
         },
         {
             "name": "bower-asset/admin-lte",
-            "version": "2.1.1",
+            "version": "v2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/almasaeed2010/AdminLTE.git",
-                "reference": "e55c2b85aa037e9ecd4ef30f913104dde91a2826"
+                "reference": "406de4e708e84ed0abbc08b09870828254a6b2ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/almasaeed2010/AdminLTE/zipball/e55c2b85aa037e9ecd4ef30f913104dde91a2826",
-                "reference": "e55c2b85aa037e9ecd4ef30f913104dde91a2826",
+                "url": "https://api.github.com/repos/almasaeed2010/AdminLTE/zipball/406de4e708e84ed0abbc08b09870828254a6b2ef",
+                "reference": "406de4e708e84ed0abbc08b09870828254a6b2ef",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -362,30 +362,27 @@
         },
         {
             "name": "bower-asset/eonasdan-bootstrap-datetimepicker",
-            "version": "4.7.14",
+            "version": "v4.14.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Eonasdan/bootstrap-datetimepicker.git",
-                "reference": "d004434a5ff76e7b97c8b07c01f34ca69e635d97"
+                "reference": "a549aa8780dbda16f6cff545aeabc3d71073911e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Eonasdan/bootstrap-datetimepicker/zipball/d004434a5ff76e7b97c8b07c01f34ca69e635d97",
-                "reference": "d004434a5ff76e7b97c8b07c01f34ca69e635d97",
+                "url": "https://api.github.com/repos/Eonasdan/bootstrap-datetimepicker/zipball/a549aa8780dbda16f6cff545aeabc3d71073911e",
+                "reference": "a549aa8780dbda16f6cff545aeabc3d71073911e",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/jquery": ">=1.8.3",
-                "bower-asset/moment": ">=2.8.0"
+                "bower-asset/moment": ">=2.9.0"
             },
             "type": "bower-asset-library",
             "extra": {
                 "bower-asset-main": [
                     "build/css/bootstrap-datetimepicker.min.css",
-                    "build/js/bootstrap-datetimepicker.min.js",
-                    "src/less/_bootstrap-datetimepicker.less",
-                    "src/less/bootstrap-datetimepicker-build.less",
-                    "src/js/bootstrap-datetimepicker.js"
+                    "build/js/bootstrap-datetimepicker.min.js"
                 ],
                 "bower-asset-ignore": [
                     "**/.*",
@@ -537,16 +534,16 @@
         },
         {
             "name": "bower-asset/jquery-slimscroll",
-            "version": "v1.3.3",
+            "version": "v1.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rochal/jQuery-slimScroll.git",
-                "reference": "c1d1c794f8364d751b188c8b21859501c7991249"
+                "reference": "7d25f8901951185e65b5a7cd8a65e5c3c28338c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rochal/jQuery-slimScroll/zipball/c1d1c794f8364d751b188c8b21859501c7991249",
-                "reference": "c1d1c794f8364d751b188c8b21859501c7991249",
+                "url": "https://api.github.com/repos/rochal/jQuery-slimScroll/zipball/7d25f8901951185e65b5a7cd8a65e5c3c28338c0",
+                "reference": "7d25f8901951185e65b5a7cd8a65e5c3c28338c0",
                 "shasum": ""
             },
             "require": {
@@ -904,19 +901,20 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "3c2400a99ccc3be6884d40361890010449c6b447"
+                "reference": "56862959b45131ad33e5a7727a25db19f2cf090b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3c2400a99ccc3be6884d40361890010449c6b447",
-                "reference": "3c2400a99ccc3be6884d40361890010449c6b447",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/56862959b45131ad33e5a7727a25db19f2cf090b",
+                "reference": "56862959b45131ad33e5a7727a25db19f2cf090b",
                 "shasum": ""
             },
             "require": {
+                "ext-mbstring": "*",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -983,7 +981,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-03-29 14:01:43"
+            "time": "2015-06-07 21:27:37"
         },
         {
             "name": "league/glide",
@@ -1236,23 +1234,23 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.0",
+            "version": "v5.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "31454f258f10329ae7c48763eb898a75c39e0a9f"
+                "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/31454f258f10329ae7c48763eb898a75c39e0a9f",
-                "reference": "31454f258f10329ae7c48763eb898a75c39e0a9f",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/0697e6aa65c83edf97bb0f23d8763f94e3f11421",
+                "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9.1"
+                "mockery/mockery": "~0.9.1,<0.9.4"
             },
             "type": "library",
             "extra": {
@@ -1281,10 +1279,11 @@
             "description": "Swiftmailer, free feature-rich PHP mailer",
             "homepage": "http://swiftmailer.org",
             "keywords": [
+                "email",
                 "mail",
                 "mailer"
             ],
-            "time": "2015-03-14 06:06:39"
+            "time": "2015-06-06 14:19:39"
         },
         {
             "name": "symfony/debug",
@@ -1935,12 +1934,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "b970f32f3d489cb04239620d72a8e889394d5298"
+                "reference": "ee8158087850bb656242ffe80c4dbf4624bbf2ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/b970f32f3d489cb04239620d72a8e889394d5298",
-                "reference": "b970f32f3d489cb04239620d72a8e889394d5298",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/ee8158087850bb656242ffe80c4dbf4624bbf2ca",
+                "reference": "ee8158087850bb656242ffe80c4dbf4624bbf2ca",
                 "shasum": ""
             },
             "require": {
@@ -2015,7 +2014,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-06-02 10:45:28"
+            "time": "2015-06-10 11:39:47"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -2822,16 +2821,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.1.3",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "28a6b34e91d789b2608072ab3c82eaae7cdb973c"
+                "reference": "be2286cb8c7e1773eded49d9719219e6f74f9e3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/28a6b34e91d789b2608072ab3c82eaae7cdb973c",
-                "reference": "28a6b34e91d789b2608072ab3c82eaae7cdb973c",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/be2286cb8c7e1773eded49d9719219e6f74f9e3e",
+                "reference": "be2286cb8c7e1773eded49d9719219e6f74f9e3e",
                 "shasum": ""
             },
             "require": {
@@ -2880,7 +2879,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-03 07:01:01"
+            "time": "2015-06-09 13:05:42"
         },
         {
             "name": "phpunit/php-file-iterator",

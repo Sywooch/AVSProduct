@@ -10,7 +10,8 @@ $(document).ready(function (){
  * Template Img block
  */
 function templateImg(){
-    imageTag = '<a href="#"><img id="%id%" src="%path%"/></a>';
+    imageTag = '<a href="%action_url%"><img id="%id%" src="%path%"/></a>';
+    //imageTag = '<a href="#"><img id="%id%" src="%path%"/></a>';
 }
 /**
  * ajax request current img info
@@ -31,6 +32,11 @@ function loadImg(){
                     [data.id, data.picture.base_url+'/'+data.picture.path, data.action_url]
                 ));
                 $('#AvsBlock').append(img);
+                var css = {
+                    'height' : data.height,
+                    'width' : data.width
+                };
+                $('#AvsBlock').find('img').css(css);
                 if(!getCookie('uniqueUser')){
                     setCookie('uniqueUser',Math.random().toString(36).substring(7),new Date(new Date().getTime() + 1 ));
                     var ads_id = $('#AvsBlock').find('img').attr('id');
@@ -41,7 +47,7 @@ function loadImg(){
                         dataType: 'json',
                         crossDomain: true,
                         data: {
-                            id:ads_id,
+                            ads_id:ads_id,
                             domain:domain,
                             unique:getCookie('uniqueUser')
                         },
