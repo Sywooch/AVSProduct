@@ -1,7 +1,8 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
+use backend\models\AdsViews;
 use trntv\filekit\behaviors\UploadBehavior;
 use yii\behaviors\TimestampBehavior;
 use Yii;
@@ -17,6 +18,7 @@ use Yii;
  * @property integer $type_id
  * @property integer $category_id
  * @property integer $user_id
+ * @property integer $action_url
  * @property integer $created_at
  * @property integer $updated_at
  *
@@ -70,6 +72,7 @@ class Ads extends \yii\db\ActiveRecord
             [['name'], 'string', 'max' => 128],
             [['type_id'],'required'],
             [['category_id'], 'required'],
+            [['action_url'], 'required'],
             ['picture', 'safe'],
         ];
     }
@@ -88,6 +91,7 @@ class Ads extends \yii\db\ActiveRecord
             'user_id'=> Yii::t('app','User ID'),
             'type_id' => Yii::t('app', 'Type ID'),
             'category_id'=>Yii::t('app', 'Category ID'),
+            'action_url' => Yii::t('app', 'Action Url'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
@@ -126,5 +130,15 @@ class Ads extends \yii\db\ActiveRecord
             self::STATUS_ACTIVE => Yii::t('backend','Active'),
             self::STATUS_DEACTIVE => Yii::t('backend','Deactive'),
         ];
+    }
+
+    public function getView()
+    {
+        return $this->hasMany(AdsViews::className(), ['ads_id' => 'id']);
+    }
+
+    public function getEvent()
+    {
+        return $this->hasMany(Ads::className(), ['ads_id' => 'id']);
     }
 }

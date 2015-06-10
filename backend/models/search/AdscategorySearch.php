@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models\search;
+namespace backend\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Adscategory;
+use backend\models\Adscategory;
 
 /**
  * AdscategorySearch represents the model behind the search form about `app\models\Adscategory`.

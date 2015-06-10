@@ -204,6 +204,15 @@ use yii\widgets\Breadcrumbs;
                             'url'=>['/adstype/index'],
                             'visible'=>Yii::$app->user->can('administrator'),
                         ],
+                        [
+                            'label'=>Yii::t('backend', 'Platform'),
+                            'icon'=>'<i class="fa fa-file"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'visible'=>Yii::$app->user->can('administrator'),
+                            'items'=>[
+                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/platforms/index'], 'icon'=>'<i class="fa fa-list"></i>'],
+                            ]
+                        ],
                         /**
                          * This menu for Publisher
                          */
@@ -222,8 +231,7 @@ use yii\widgets\Breadcrumbs;
                             'options'=>['class'=>'treeview'],
                             'visible'=>Yii::$app->user->can('publisher'),
                             'items'=>[
-//                                ['label'=>Yii::t('backend', 'List'), 'url'=>['/ads/index'], 'icon'=>'<i class="fa fa-list"></i>'],
-                                ['label'=>Yii::t('backend', 'Generate'), 'url'=>['/ads/generate'], 'icon'=>'<i class="fa fa-random"></i>'],
+                                ['label'=>Yii::t('backend', 'Generate'), 'url'=>['/block-code/index'], 'icon'=>'<i class="fa fa-random"></i>'],
                             ]
                         ],
                         [

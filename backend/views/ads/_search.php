@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\search\AdsSearch */
+/* @var $model backend\models\search\AdsSearch */
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 

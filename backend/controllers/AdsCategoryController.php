@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Adscategory;
-use app\models\search\AdscategorySearch;
+use backend\models\Adscategory;
+use backend\models\search\AdscategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
