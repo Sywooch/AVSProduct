@@ -74,9 +74,30 @@ class AdsController extends Controller
      */
     public function actionView($id)
     {
+//        $data = [
+//            ['date' => '2006-05-14T20:00:00-0400', 'Views' => 67.37, 'Actions' => 68.38],
+//            ['date' => '2006-05-15T20:00:00-0400', 'Views' => 68.1, 'Actions' => 68.25],
+//            ['date' => '2006-05-16T20:00:00-0400', 'Views' => 64.7, 'Actions' => 65.7],
+//            ['date' => '2006-05-17T20:00:00-0400', 'Views' => 65.68, 'Actions' => 66.26],
+//            ['date' => '2006-05-18T20:00:00-0400', 'Views' => 63.26, 'Actions' => 64.88],
+//            ['date' => '2006-05-21T20:00:00-0400', 'Views' => 63.87, 'Actions' => 63.99],
+//            ['date' => '2006-05-22T20:00:00-0400', 'Views' => 64.86, 'Actions' => 65.19],
+//            ['date' => '2006-05-23T20:00:00-0400', 'Views' => 62.99, 'Actions' => 63.65],
+//            ['date' => '2006-05-24T20:00:00-0400', 'Views' => 64.26, 'Actions' => 64.45],
+//            ['date' => '2006-05-25T20:00:00-0400', 'Views' => 64.31, 'Actions' => 64.56],
+//        ];
         return $this->render('view', [
             'model' => $this->findModel($id),
+//            'data' => $data
         ]);
+    }
+    public function actionStat(){
+        $ads = Ads::findOne(1);
+        $views = $ads->getView()->orderBy(['created_at'])->all();
+        $events = $ads->getEvent()->all();
+//        $events = $ads->getEvent()->all();
+        print_r($events);
+        die();
     }
 
     /**

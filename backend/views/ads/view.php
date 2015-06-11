@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use miloschuman\highcharts\Highstock;
+use miloschuman\highcharts\SeriesDataHelper;
+use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Ads */
@@ -37,5 +40,30 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
         ],
     ]) ?>
+
+    <?php
+
+        $dataProvider = new \yii\data\ArrayDataProvider(['allModels' => '']);
+        echo Highstock::widget([
+            'options' => [
+                'title' => ['text' => Yii::t('app','Statistics for this Ads')],
+                'yAxis' => [
+                    ['title' => ['text' => Yii::t('app','Actions and Views')]],
+                ],
+                'series' => [
+                    [
+                        'type' => 'column',
+                        'name' => 'Views',
+                        'data' => new SeriesDataHelper($dataProvider, ['date:datetime', 'Views']),
+                    ],
+                    [
+                        'type' => 'column',
+                        'name' => 'Actions',
+                        'data' => new SeriesDataHelper($dataProvider, ['date:datetime', 'Actions']),
+                    ],
+                ]
+            ]
+        ]);
+    ?>
 
 </div>
